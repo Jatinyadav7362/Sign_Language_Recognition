@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Signovate - Translator</title>
+    <!-- Added favicon link -->
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  </head>
+  <body>
+    <header>
+      <div class="header-content">
+        <!-- Logo stays on left -->
+        <a href="/" class="logo">
+          <div class="logo">
+            <img src="{{ url_for('static', filename='favicon.png') }}" alt="Logo" class="logo-img" />
+          </div>
+        </a>
+        
+        <!-- Group nav and theme toggle in a right-aligned container -->
+        <div class="header-right">
+          <!-- Navigation links -->
+          <nav class="main-nav">
+            <ul class="nav-links">
+              <li><a href="/" class="nav-link">Home</a></li>
+              <li><a href="/app" class="nav-link active">Translator</a></li>
+              <li><a href="/about" class="nav-link">Details</a></li>
+              <li><a href="/contact" class="nav-link">Contact</a></li>
+            </ul>
+          </nav>
+    
+          <!-- Theme toggle stays at far right -->
+          <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+            <i class="fas fa-moon" id="theme-icon"></i>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- main -->
+    <main class="container">
+      <h1>Sign Language Recognition</h1>
+
+      <div class="feature-badges">
+        <div class="badge">
+          <i class="fas fa-bolt"></i> Real-time Processing
+        </div>
+        <div class="badge"><i class="fas fa-chart-line"></i> High Accuracy</div>
+        <div class="badge"><i class="fas fa-globe"></i> ASL Support</div>
+        <div class="badge"><i class="fas fa-volume-up"></i> Speech Output</div>
+      </div>
+
+      <!-- video box with status indicator moved to the right side -->
+      <section class="glass video-box">
+        <div class="section-header">
+          <i class="fas fa-video"></i>
+          <span>Live Camera Feed</span>
+        </div>
+
+        <!-- Status indicator on the right side -->
+        <div class="video-status-indicator active" id="video-status-indicator">
+          <div class="status-dot"></div>
+          <span>Active</span>
+        </div>
+        
+        <div class="video-feed">
+          <img
+            id="video-stream"
+            src="{{ url_for('video_feed') }}"
+            alt="Live Camera Feed"
+          />
+          <div class="loading-overlay" id="loading-overlay">
+            <div class="loading-spinner"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- text box  -->
+      <section class="glass sentence-box">
+        <div class="section-header">
+          <i class="fas fa-language"></i>
+          <span>Translated Sentence</span>
+        </div>
+        <textarea
+          id="sentence-input"
+          class="sentence-input"
+          placeholder="Recognized signs will appear here..."
+          readonly
+        ></textarea>
+      </section>
+
+      <!-- Control Buttons -->
+      <div class="controls">
+        <button class="control-btn primary" id="toggle-button">
+          <i class="fas fa-pause" id="toggle-icon"></i>
+          <span id="toggle-text">Pause Recognition</span>
+        </button>
+        <button class="control-btn primary" id="speak-button">
+          <i class="fas fa-volume-up"></i> Speak Text
+        </button>
+        <button class="control-btn secondary" id="clear-button">
+          <i class="fas fa-trash"></i> Clear All
+        </button>
+        <button class="control-btn secondary" id="deleteButton">
+          <i class="fas fa-backspace"></i> Delete Last
+        </button>
+      </div>
+    </main>
+
+   <!-- Footer with reduced height and improved layout -->
+<footer class="site-footer">
+  <div class="footer-content">
+    <!-- Left half: Logo and description side by side -->
+    <div class="footer-left">
+      <div class="logo">
+        <img
+          src="{{ url_for('static', filename='favicon.png') }}"
+          alt="Logo"
+          class="logo-img"
+        />
+      </div>
+
+      <div class="footer-description">
+        <p>
+          Empowering communication through AI-powered sign language recognition technology.
+          Breaking barriers and creating inclusive spaces for the deaf and hard of hearing community.
+        </p>
+      </div>
+    </div>
+    
+    <!-- Right half: LinkedIn profiles in single column -->
+    <div class="footer-right">
+      <div class="social-profiles">
+        <div class="social-profile">
+          <a href="https://www.linkedin.com/in/jatin-yadav-371ab7248/" target="_blank" title="LinkedIn">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <span class="profile-name">Jatin Yadav</span>
+        </div>
+        
+        <div class="social-profile">
+          <a href="https://www.linkedin.com/in/aman-sharma-b2103923b/" target="_blank" title="LinkedIn">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <span class="profile-name">Aman Sharma</span>
+        </div>
+        
+        <div class="social-profile">
+          <a href="https://www.linkedin.com/in/ayush-soni-632a8622a/" target="_blank" title="LinkedIn">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <span class="profile-name">Ayush Soni</span>
+        </div>
+        
+        <div class="social-profile">
+          <a href="https://www.linkedin.com/in/hrsgrg21/" target="_blank" title="LinkedIn">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <span class="profile-name">Harsh Garg</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-bottom">
+    &copy; 2025 SignTech Recognition. All rights reserved.
+  </div>
+</footer>
+
+    <!-- Scripts -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  </body>
+</html>

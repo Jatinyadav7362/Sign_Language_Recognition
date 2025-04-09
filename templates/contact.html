@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Signovate - Translator</title>
+    <!-- Added favicon link -->
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  </head>
+  <body>
+    <header>
+      <div class="header-content">
+        <!-- Logo stays on left -->
+        <a href="/" class="logo">
+          <div class="logo">
+            <img src="{{ url_for('static', filename='favicon.png') }}" alt="Logo" class="logo-img" />
+          </div>
+        </a>
+        
+        <!-- Group nav and theme toggle in a right-aligned container -->
+        <div class="header-right">
+          <!-- Navigation links -->
+          <nav class="main-nav">
+            <ul class="nav-links">
+              <li><a href="/" class="nav-link">Home</a></li>
+              <li><a href="/app" class="nav-link active">Translator</a></li>
+              <li><a href="/about" class="nav-link">Details</a></li>
+              <li><a href="/contact" class="nav-link">Contact</a></li>
+            </ul>
+          </nav>
+    
+          <!-- Theme toggle stays at far right -->
+          <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+            <i class="fas fa-moon" id="theme-icon"></i>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main content -->
+    <main class="container">
+      <h1>Our Team</h1>
+
+      <div class="team-container">
+        <!-- Team Member 1 -->
+        <div class="glass team-member-card">
+          <div class="team-member-photo">
+            <img
+              src="{{ url_for('static', filename='images/team/jatin.jpg') }}"
+              alt="Jatin Yadav"
+              onerror="this.src='/api/placeholder/200/200'"
+            />
+          </div>
+          <div class="team-member-info">
+            <h2>Jatin Yadav</h2>
+            <p class="team-role">Machine Learning Developer & UI/UX Designer</p>
+            <p class="team-bio">
+              Jatin played a pivotal role in the machine learning aspect of the
+              project. He was responsible for the collection and cleaning of the
+              dataset, as well as the training of the model, which facilitated
+              the accurate recognition and real-time translation of sign
+              language gestures. Moreover, he made significant contributions to
+              the user interface and user experience design of the web
+              application, ensuring that it was both visually appealing and
+              user-friendly, thereby enhancing the overall user experience.
+            </p>
+            <div class="team-social">
+              <a
+                href="https://www.linkedin.com/in/jatin-yadav-371ab7248/"
+                target="_blank"
+                class="social-link"
+              >
+                <i class="fab fa-linkedin"></i>
+              </a>
+              <a
+                href="https://github.com/Jatinyadav7362"
+                target="_blank"
+                class="social-link"
+              >
+                <i class="fab fa-github"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Team Member 2 -->
+        <div class="glass team-member-card">
+          <div class="team-member-photo">
+            <img
+              src="{{ url_for('static', filename='images/team/aman.jpg') }}"
+              alt="Aman Sharma"
+              onerror="this.src='/api/placeholder/200/200'"
+            />
+          </div>
+          <div class="team-member-info">
+            <h2>Aman Sharma</h2>
+            <p class="team-role">Front-End Developer</p>
+            <p class="team-bio">
+              Aman focused on the front-end development of the web application.
+              He diligently implemented design elements to ensure that the
+              platform is responsive and functional. His efforts emphasize
+              creating a seamless user experience, allowing users to interact
+              with the system effortlessly. Furthermore, he incorporated best
+              practices to enhance both the usability and visual appeal of the
+              application.
+            </p>
+            <div class="team-social">
+              <a
+                href="https://www.linkedin.com/in/aman-sharma-b2103923b/"
+                target="_blank"
+                class="social-link"
+              >
+                <i class="fab fa-linkedin"></i>
+              </a>
+              <a
+                href="https://github.com/profile 2 g"
+                target="_blank"
+                class="social-link"
+              >
+                <i class="fab fa-github"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Team Member 3 -->
+        <div class="glass team-member-card">
+          <div class="team-member-photo">
+            <img
+              src="{{ url_for('static', filename='images/team/ayush.jpg') }}"
+              alt="Ayush Soni"
+              onerror="this.src='/api/placeholder/200/200'"
+            />
+          </div>
+          <div class="team-member-info">
+            <h2>Ayush Soni</h2>
+            <p class="team-role">Back-End Developer</p>
+            <p class="team-bio">
+              Ayush undertook the back-end development utilizing Flask. He was
+              tasked with developing the server-side logic, integrating the
+              machine learning model, and managing the database to facilitate
+              smooth and real-time sign language translation. His expertise in
+              these areas ensured the implementation was efficient, secure, and
+              aligned with best practices in software development.
+            </p>
+            <div class="team-social">
+              <a
+                href="https://www.linkedin.com/in/ayush-soni-632a8622a/"
+                target="_blank"
+                class="social-link"
+              >
+                <i class="fab fa-linkedin"></i>
+              </a>
+              <a
+                href="https://github.com/AyushSoni-09"
+                target="_blank"
+                class="social-link"
+              >
+                <i class="fab fa-github"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Team Member 4 -->
+        <div class="glass team-member-card">
+          <div class="team-member-photo">
+            <img
+              src="{{ url_for('static', filename='images/team/harsh.jpg') }}"
+              alt="Harsh Garg"
+              onerror="this.src='/api/placeholder/200/200'"
+            />
+          </div>
+          <div class="team-member-info">
+            <h2>Harsh Garg</h2>
+            <p class="team-role">Speech Synthesis & Translation Developer</p>
+            <p class="team-bio">
+              Harsh undertook the task of integrating speech synthesis into the
+              web application, thereby enabling the system to convert translated
+              sign language into audible speech. Additionally, he focused on
+              optimizing the translation algorithms to ensure that both text and
+              speech outputs are accurate and easily comprehensible.
+            </p>
+            <div class="team-social">
+              <a
+                href="https://www.linkedin.com/in/hrsgrg21/"
+                target="_blank"
+                class="social-link"
+              >
+                <i class="fab fa-linkedin"></i>
+              </a>
+              <a
+                href="https://github.com/Hrsgrg"
+                target="_blank"
+                class="social-link"
+              >
+                <i class="fab fa-github"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact form section has been removed as requested -->
+    </main>
+
+    <!-- Footer with reduced height and improved layout -->
+    <footer class="site-footer">
+      <div class="footer-content">
+        <!-- Left half: Logo and description side by side -->
+        <div class="footer-left">
+          <div class="logo">
+            <img
+              src="{{ url_for('static', filename='favicon.png') }}"
+              alt="Logo"
+              class="logo-img"
+            />
+          </div>
+
+          <div class="footer-description">
+            <p>
+              Empowering communication through AI-powered sign language
+              recognition technology. Breaking barriers and creating inclusive
+              spaces for the deaf and hard of hearing community.
+            </p>
+          </div>
+        </div>
+
+        <!-- Right half: LinkedIn profiles in single column -->
+        <div class="footer-right">
+          <div class="social-profiles">
+            <div class="social-profile">
+              <a
+                href="https://www.linkedin.com/in/jatin-yadav-371ab7248/"
+                target="_blank"
+                title="LinkedIn"
+              >
+                <i class="fab fa-linkedin"></i>
+              </a>
+              <span class="profile-name">Jatin Yadav</span>
+            </div>
+
+            <div class="social-profile">
+              <a
+                href="https://www.linkedin.com/in/aman-sharma-b2103923b/"
+                target="_blank"
+                title="LinkedIn"
+              >
+                <i class="fab fa-linkedin"></i>
+              </a>
+              <span class="profile-name">Aman Sharma</span>
+            </div>
+
+            <div class="social-profile">
+              <a
+                href="https://www.linkedin.com/in/ayush-soni-632a8622a/"
+                target="_blank"
+                title="LinkedIn"
+              >
+                <i class="fab fa-linkedin"></i>
+              </a>
+              <span class="profile-name">Ayush Soni</span>
+            </div>
+
+            <div class="social-profile">
+              <a
+                href="https://www.linkedin.com/in/hrsgrg21/"
+                target="_blank"
+                title="LinkedIn"
+              >
+                <i class="fab fa-linkedin"></i>
+              </a>
+              <span class="profile-name">Harsh Garg</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        &copy; 2025 SignTech Recognition. All rights reserved.
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  </body>
+</html>
