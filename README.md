@@ -45,6 +45,7 @@ To set up the Sign Language Recognition System on your local machine, follow the
     ```
 
 2. Install the required packages using the requirements.txt file:
+   This project requires **Python 3.10.6**. Please make sure it's installed before proceeding.
 
     ```bash
     # Windows
@@ -61,6 +62,7 @@ To set up the Sign Language Recognition System on your local machine, follow the
     ```
 
 You are now ready to use the Sign Language Recognition System on your local machine.
+
 
 ## Usage
 To use the Sign Language Recognition System, follow these steps:
