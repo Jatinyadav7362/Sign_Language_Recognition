@@ -39,7 +39,7 @@ def process_frame(image):
     if last_word_time is None:
         last_word_time = current_time
 
-    required_time = 10 if first_detection else 5  # 15s for first, 4s for others
+    required_time = 7 if first_detection else 4  # 15s for first, 4s for others
     remaining_time = max(0, int(required_time - (current_time - last_word_time)))  # Calculate countdown
 
     if results.multi_hand_landmarks:
@@ -76,7 +76,7 @@ def process_frame(image):
             if hand_sign_text:
                 cv.putText(image, hand_sign_text, (40, 75), cv.FONT_HERSHEY_SIMPLEX, 2, (0, 0, 0), 3, cv.LINE_AA)
 
-    # ✅ Display countdown timer on the screen
+    #  Display countdown timer on the screen
     timer_text = f"{remaining_time}s"
     cv.putText(image, timer_text, (570, 55), cv.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 0), 2, cv.LINE_AA)
 

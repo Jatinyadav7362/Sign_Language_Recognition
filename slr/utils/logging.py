@@ -6,77 +6,80 @@ import numpy as np
 
 def log_keypoints(key, landmark_list, counter_obj, data_limit=1000):
     """
+    Logs keypoints when a key is pressed and saves them to a CSV file.
 
-    :param key: Keyboard key (latter)
+    :param key: Keyboard key (letter or space)
     :param landmark_list: Preprocessed landmark list
-    :param counter_obj:
-    :param data_limit: How many row need for each sign
+    :param counter_obj: Dictionary tracking the count of each label
+    :param data_limit: Maximum number of samples per label
     :return: None
     """
     counter_file = "slr/model/counter.json"
-
-    _dict = {}
     csv_path = "slr/model/keypoint.csv"
     index = -1
 
-    # counter_obj = _get_dict_form_list(csv_path)
-    counter_obj = counter_obj
-
-    #: Escaping 'J/j'
-    if key == 106 or key == 74:
+    # Avoid logging 'J/j' or 'Z/z'
+    if key in [74, 106]:  # ASCII: J/j
         return
 
-    if 65 <= key <= 89 or 97 <= key <= 121:  # A-Z / a-z
+    # Handling Spacebar (key == 32)
+    if key == 32:
+        index = 24  # Assigning space the next available index after Y
 
-        #: Calculating index of letters
+    # Handling letters A-Y (excluding J and Z)
+    elif 65 <= key <= 89 or 97 <= key <= 121:  # A-Y / a-y
         if 65 <= key <= 90:  # Capital letters
             index = key - 65
-
-            #: Subtracting index by 1 after 'J'
-            if key > 74:   # J
+            if key > 74:  # Adjust index after J
                 index -= 1
 
         elif 97 <= key <= 122:  # Small letters
             index = key - 97
-
-            #: Subtracting index by 1 after 'j'
-            if key > 106:   # j
+            if key > 106:  # Adjust index after j
                 index -= 1
 
-        #: Counting limit
-        if str(index) in counter_obj.keys():
-            counter_obj[str(index)] += 1
-        else:
-            counter_obj[str(index)] = 1
-            
-        #: -
-        #: Writing counter
-        if counter_obj[str(index)] > data_limit:  #: Limit of capturing image
-            print(f"Dataset limit reached for {chr(key).upper()} [{counter_obj[str(index)]-1}/{data_limit}]")
-            return
-        else:
-            with open(counter_file, "w") as cf:
-                counter_obj_writable = json.dumps(counter_obj, indent=4)
-                cf.write(counter_obj_writable)
+    # If key is not recognized, return
+    if index == -1:
+        return
 
-            print(f"{chr(key).upper()} => {counter_obj[str(index)]}/{data_limit}")
+    # Update counter for dataset limit
+    if str(index) in counter_obj.keys():
+        counter_obj[str(index)] += 1
+    else:
+        counter_obj[str(index)] = 1
 
-        #: -
-        #: Writing dataset
-        with open(csv_path, 'a', newline="") as f:
-            writer = csv.writer(f)
-            writer.writerow([index, *landmark_list])
+    # Check data limit
+    if counter_obj[str(index)] > data_limit:
+        print(f"Dataset limit reached for {chr(key).upper() if key != 32 else 'Space'} [{counter_obj[str(index)] - 1}/{data_limit}]")
+        return
 
-    return
+    # Save counter update
+    with open(counter_file, "w") as cf:
+        counter_obj_writable = json.dumps(counter_obj, indent=4)
+        cf.write(counter_obj_writable)
+
+    # Print logging status
+    print(f"{chr(key).upper() if key != 32 else 'Space'} => {counter_obj[str(index)]}/{data_limit}")
+
+    # Write keypoints to CSV
+    with open(csv_path, 'a', newline="") as f:
+        writer = csv.writer(f)
+        writer.writerow([index, *landmark_list])
 
 
 def get_dict_form_list(file):
+    """
+    Reads the dataset and counts the occurrences of each label.
+    
+    :param file: Path to the CSV file
+    :return: Dictionary with counts of each label
+    """
     _list = []
     with open(file) as f:
         for row in f:
             _list.append(row.split(",")[0])
 
-    if len(_list)==0:
+    if len(_list) == 0:
         return {}
 
     obj = {}
@@ -88,35 +91,17 @@ def get_dict_form_list(file):
     return obj
 
 
-def _get_alphabet_index(key):
-    """
-
-    :param key: Keyboard key (latter)
-    :return: Index of alphabate
-    """
-    cap_ascii_list = [
-        65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77,
-        78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90
-    ]
-    sm_ascii_list = [
-        97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109,
-        110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122
-    ]
-
-    index = 0
-    return index
-
-
 def get_mode(key, _mode):
     """
+    Toggles between normal mode (0) and logging mode (1) when 0 or 1 is pressed.
+
     :param key: Pressed key
-    :param mode: Mode of program
-    :return: mode
+    :param _mode: Current mode
+    :return: Updated mode
     """
     mode = _mode
-    if key == 48:
+    if key == 48:  # Key '0'
         mode = 0
-    elif key == 49:
+    elif key == 49:  # Key '1'
         mode = 1
-
     return mode

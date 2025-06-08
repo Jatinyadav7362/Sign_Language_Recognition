@@ -1,4 +1,4 @@
-![MasterHead](docs/SLR.png) 
+<!-- ![MasterHead](docs/SLR.png)  -->
 # Signovate – Real-Time Sign Language Recognition System
 
 This repository contains the source code and resources for **Signovate**, a real-time sign language recognition system. The goal of this project is to bridge the communication gap for individuals with hearing impairments using computer vision and machine learning.
@@ -95,12 +95,14 @@ Here is a demo of the Sign Language Recognition System in action:
 ## Customization
 The Sign Language Recognition System is fully customizable and can be trained to recognize any hand gesture. To customize the system, follow these steps:
 
-1. Run the `app.py` file to open the application.
-2. Press the `1` key to switch to the `Data Collection` mode. Press the `0` key if you want to switch to the `prediction` mode.
-3. Make the hand gesture you want to add to the dataset.
-4. Press the alphabetic key to save the gesture to the dataset corresponding to the letter.
-5. Add as many gestures as you want to the dataset. More data will result in better accuracy.
-6. After adding all the gestures, press the `esc` key to quit the program. Then run the `training.ipynb` Jupyter notebook file to train the model on the new dataset.
+1. There are two files `app.py` for prediction mode and `app_train.py` for data collection mode.
+2. Run the `app.py` file to open the application for prediction mode .
+3. For creating your own dataset from scratch reset the keypoint.csv file and counter.json.
+4. For creating your own dataset and training it run the `app_train.py` file.
+5. Make the hand gesture you want to add to the dataset.
+6. Press the alphabetic key to save the gesture to the dataset corresponding to the letter and spacbar key  for space.
+7. Add as many gestures as you want to the dataset. More data will result in better accuracy.
+8. After adding all the gestures, press the `esc` key to quit the program. Then run the `training.ipynb` Jupyter notebook file to train the model on the new dataset.
    
 Enjoy your customized Sign Language Recognition System!
 
@@ -165,7 +167,7 @@ The preprocessed data is used to train a machine learning model to recognize and
 
 2. Split the dataset into training and validation sets. It is recommended to use a separate testing set for final evaluation.
 
-3. Choose an appropriate machine learning algorithm or architecture, such as CNNs, RNNs, or their combinations, and implement it using a suitable framework like TensorFlow or PyTorch. For this project, we use a CNN architecture implemented using TensorFlow.
+3. Choose an appropriate machine learning algorithm or architecture, such as CNNs, RNNs, or their combinations, and implement it using a suitable framework like TensorFlow or PyTorch. For this project, we use a ANN architecture implemented using TensorFlow.
 
 4. Train the model using the training dataset and tune hyperparameters to achieve optimal performance.
 
