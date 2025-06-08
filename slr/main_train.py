@@ -7,9 +7,9 @@ from slr.utils.args import get_args
 from slr.utils.landmarks import draw_landmarks
 from slr.utils.draw_debug_train import draw_bounding_rect
 from slr.utils.draw_debug_train import draw_hand_label
-from slr.utils.pre_process_train import calc_bounding_rect
-from slr.utils.pre_process_train import calc_landmark_list
-from slr.utils.pre_process_train import pre_process_landmark
+from slr.utils.pre_process import calc_bounding_rect
+from slr.utils.pre_process import calc_landmark_list
+from slr.utils.pre_process import pre_process_landmark
 from slr.utils.logging import log_keypoints
 from slr.utils.logging import get_dict_form_list
 
